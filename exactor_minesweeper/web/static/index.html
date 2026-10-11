@@ -8,6 +8,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="/static/style.css">
+    <script async src="https://tally.so/widgets/embed.js"></script>
 </head>
 <body class="dark-theme">
     <div class="app-wrapper">
@@ -31,6 +32,9 @@
             </div>
 
             <div class="nav-actions">
+                <button class="btn btn-primary btn-book-demo" onclick="openContactModal()">
+                    📅 Book Demo / Contact
+                </button>
                 <button id="soundToggleBtn" class="btn btn-icon" title="Toggle Sound Effects">🔊</button>
                 <a href="https://github.com" target="_blank" class="btn btn-outline" id="githubLink">
                     <svg height="16" width="16" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27.68 0 1.36.09 2 .27 1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.013 8.013 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
@@ -38,6 +42,7 @@
                 </a>
             </div>
         </header>
+
 
         <!-- NAVIGATION TABS -->
         <div class="tabs-container">
@@ -305,10 +310,74 @@
                     </div>
                 </div>
             </section>
-
         </main>
+    </div>
+
+    <!-- CONTACT & BOOK DEMO MODAL (4 KEY B2B FIELDS) -->
+    <div id="contactModal" class="contact-modal-backdrop" style="display: none;" onclick="handleModalOverlayClick(event)">
+
+        <div class="contact-modal-card" onclick="event.stopPropagation()">
+            <button class="contact-modal-close" onclick="closeContactModal()" aria-label="Close Modal">&times;</button>
+            <div class="contact-modal-header">
+                <div class="contact-badge">ENTERPRISE EVALUATION</div>
+                <h3 class="contact-title">Book an Exactor Accelerator Demo</h3>
+                <p class="contact-desc">
+                    Transform your mission-critical AI workloads into sub-millisecond, deterministic boolean reflexes. Connect directly with our engineering team or schedule on Cal.com.
+                </p>
+            </div>
+
+            <div class="contact-quick-actions">
+                <a href="https://cal.com/exactor-tech" target="_blank" rel="noopener noreferrer" class="btn btn-cal">
+                    📅 Schedule Directly on Cal.com
+                </a>
+                <button class="btn btn-tally" data-tally-open="w2xD4P" data-tally-emoji-text="⚡" data-tally-emoji-animation="wave">
+                    📝 Open Form in Tally / Typeform
+                </button>
+            </div>
+
+            <div class="contact-divider">
+                <span>OR SUBMIT IN-APP INQUIRY</span>
+            </div>
+
+            <form id="contactForm" onsubmit="submitContactForm(event)" class="contact-form">
+                <div class="form-group">
+                    <label for="leadName">Full Name *</label>
+                    <input type="text" id="leadName" name="name" required placeholder="e.g. Alex Mercer" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="leadEmail">Work Email *</label>
+                    <input type="email" id="leadEmail" name="email" required placeholder="alex@company.com" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="leadCompanyRole">Company & Role *</label>
+                    <input type="text" id="leadCompanyRole" name="company_role" required placeholder="e.g. Acme Cloud Corp — VP of Engineering / SecOps Lead" class="form-input">
+                </div>
+
+                <div class="form-group">
+                    <label for="leadUseCase">Use Case & Decision Volume *</label>
+                    <textarea id="leadUseCase" name="use_case" rows="3" required placeholder="Describe your latency/cost bottleneck, target decision volume (e.g. 50k req/s, WAF, autonomous agents, verification), and current AI stack." class="form-input"></textarea>
+                </div>
+
+                <button type="submit" id="btnSubmitLead" class="btn btn-primary btn-submit-lead">
+                    ⚡ Request Architecture Session
+                </button>
+
+                <div id="contactSuccessMsg" class="contact-success-banner" style="display: none;">
+                    ✅ <strong>Request Registered!</strong> Connecting you with <a href="mailto:contact@exactor.tech">contact@exactor.tech</a>...
+                </div>
+            </form>
+
+            <div class="contact-modal-footer">
+                <span>Direct Inquiries: <a href="mailto:contact@exactor.tech">contact@exactor.tech</a></span>
+                <span>•</span>
+                <span class="compliance-pill">SOC2 / ISO 27001 Compliant Architecture</span>
+            </div>
+        </div>
     </div>
 
     <script src="/static/app.js"></script>
 </body>
 </html>
+

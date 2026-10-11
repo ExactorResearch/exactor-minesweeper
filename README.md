@@ -163,6 +163,17 @@ print(f"Action: {move.action} at ({move.row}, {move.col}) | Proof: {move.causal_
 
 ---
 
+## 📅 Enterprise Evaluation & Demo Scheduling
+
+Explore how Exactor Accelerator combines deterministic algebraic reduction with Bayesian/LLM fallback:
+
+- **Schedule a 15-Min Architecture Review:** [Book Directly on Cal.com](https://cal.com/exactor-tech)
+- **Submit Workload Requirements:** [Open Tally / Typeform Assessment](https://tally.so/r/w2xD4P)
+- **Direct Commercial Inquiries:** [`contact@exactor.tech`](mailto:contact@exactor.tech)
+
+---
+
 ## License
 
 Dual-licensed under [MIT](LICENSE) or [Apache 2.0](LICENSE-APACHE).
+

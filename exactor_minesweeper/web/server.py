@@ -64,6 +64,30 @@ class BenchmarkRequest(BaseModel):
     difficulty: str = "beginner"
 
 
+class ContactLeadRequest(BaseModel):
+    name: str
+    email: str
+    company_role: str
+    use_case: str
+
+
+@app.post("/api/contact")
+async def register_contact_lead(lead: ContactLeadRequest):
+    return {
+        "status": "success",
+        "message": "Lead received. Forwarding to contact@exactor.tech",
+        "lead": {
+            "name": lead.name,
+            "email": lead.email,
+            "company_role": lead.company_role,
+            "use_case": lead.use_case,
+        },
+        "target_email": "contact@exactor.tech",
+        "booking_url": "https://cal.com/exactor-tech",
+    }
+
+
+
 @app.get("/")
 async def get_index():
     index_path = os.path.join(STATIC_DIR, "index.html")
