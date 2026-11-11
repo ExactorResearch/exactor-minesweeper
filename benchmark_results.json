@@ -1,0 +1,67 @@
+{
+  "timestamp": "2026-11-11T20:33:42.753881",
+  "difficulty": "beginner",
+  "num_games": 25,
+  "metrics": {
+    "Exactor-Accelerator (Neuro-Symbolic)": {
+      "agent_name": "Exactor-Accelerator (Neuro-Symbolic)",
+      "total_games": 25,
+      "wins": 24,
+      "losses": 1,
+      "win_rate_pct": 96.0,
+      "avg_moves_per_game": 20.36,
+      "deterministic_move_ratio_pct": 97.64,
+      "avg_latency_per_move_ms": 0.451,
+      "p50_latency_ms": 0.3948,
+      "p95_latency_ms": 0.7108,
+      "p99_latency_ms": 0.9068,
+      "total_time_seconds": 0.238,
+      "total_api_calls": 0,
+      "avg_api_calls_per_game": 0.0,
+      "deterministic_accuracy_pct": 100.0,
+      "speedup_vs_baseline": 1756.8
+    },
+    "Pure JEV (LLM / RLCD)": {
+      "agent_name": "Pure JEV (LLM / RLCD)",
+      "total_games": 25,
+      "wins": 0,
+      "losses": 25,
+      "win_rate_pct": 0.0,
+      "avg_moves_per_game": 3.72,
+      "deterministic_move_ratio_pct": 100.0,
+      "avg_latency_per_move_ms": 792.2749,
+      "p50_latency_ms": 768.3607,
+      "p95_latency_ms": 1075.5924,
+      "p99_latency_ms": 1099.1911,
+      "total_time_seconds": 80.13,
+      "total_api_calls": 93,
+      "avg_api_calls_per_game": 3.7,
+      "deterministic_accuracy_pct": 85.0,
+      "speedup_vs_baseline": 1.0
+    },
+    "Standard Heuristic (1st Order)": {
+      "agent_name": "Standard Heuristic (1st Order)",
+      "total_games": 25,
+      "wins": 18,
+      "losses": 7,
+      "win_rate_pct": 72.0,
+      "avg_moves_per_game": 24.12,
+      "deterministic_move_ratio_pct": 95.19,
+      "avg_latency_per_move_ms": 0.1386,
+      "p50_latency_ms": 0.1221,
+      "p95_latency_ms": 0.21,
+      "p99_latency_ms": 0.2179,
+      "total_time_seconds": 0.082,
+      "total_api_calls": 0,
+      "avg_api_calls_per_game": 0.0,
+      "deterministic_accuracy_pct": 70.0,
+      "speedup_vs_baseline": 5714.4
+    }
+  },
+  "summary": {
+    "total_benchmark_time_seconds": 80.61,
+    "fastest_agent": "Standard Heuristic (1st Order)",
+    "highest_winrate_agent": "Exactor-Accelerator (Neuro-Symbolic)",
+    "speedup_factor": 1756.8
+  }
+}

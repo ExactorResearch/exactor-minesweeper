@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "exactor-minesweeper"
-version = "1.0.0"
+version = "1.0.1"
 description = "Neuro-Symbolic Minesweeper Benchmark: Exactor-Accelerator (Fast-Path Boolean SAT) vs Pure JEV (LLM/RLCD)"
 readme = "README.md"
 license = { text = "MIT" }

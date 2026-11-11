@@ -11,9 +11,14 @@ from typing import Optional, Dict, Any, Tuple
 from exactor_minesweeper.agents.base import BaseMinesweeperAgent, AgentAction, ActionType
 from exactor_minesweeper.core.board import MinesweeperBoard
 
-# Attempt to import Jev from exactor-jev SDK
+# Attempt to import Jev SDK: prefer a sibling exactor-jev checkout, then the
+# vendored jev_sdk.py at the repository root.
 try:
-    sys.path.insert(0, os.path.abspath(os.path.join(os.path.dirname(__file__), "..", "..", "..", "exactor-jev")))
+    _repo_root = os.path.abspath(os.path.join(os.path.dirname(__file__), "..", ".."))
+    _sibling_sdk = os.path.abspath(os.path.join(_repo_root, "..", "exactor-jev"))
+    for _p in (_sibling_sdk, _repo_root):
+        if os.path.isdir(_p) and _p not in sys.path:
+            sys.path.insert(0, _p)
     from jev_sdk import Jev
     JEV_SDK_AVAILABLE = True
 except Exception:
@@ -94,20 +99,56 @@ class JevPureAgent(BaseMinesweeperAgent):
             "sample_candidates": candidates[:10],
         }
 
-        # If live API is connected, we can invoke real Jev
+        # If live API is connected, invoke real Jev and USE its choice.
         executed_live_api = False
-        if self.client and os.environ.get("TYPESAFE_API_KEY"):
+        live_choice = None
+        live_confidence = 0.0
+        has_key = bool(os.environ.get("JEV_API_KEY") or os.environ.get("TYPESAFE_API_KEY"))
+        if self.client and has_key:
             try:
+                choices = [f"REVEAL_{r}_{c}" for r, c in candidates[:5]]
+                choices += [f"FLAG_{r}_{c}" for r, c in candidates[-2:]]
                 response = self.client.choose(
                     state=state_repr,
                     instruction="Select the best Minesweeper cell coordinate and action (REVEAL or FLAG) to advance the board safely.",
-                    choices=[f"REVEAL_{r}_{c}" for r, c in candidates[:5]]
+                    choices=choices,
                 )
-                executed_live_api = True
+                live_choice = response.get("choice") or response.get("action")
+                live_confidence = float(response.get("confidence") or 0.0)
+                executed_live_api = bool(live_choice)
             except Exception:
                 executed_live_api = False
 
-        simulated_lat = 0.0 if executed_live_api else round(random.uniform(320.0, 680.0), 2)
+        if executed_live_api:
+            # Parse "REVEAL_r_c" / "FLAG_r_c" back into a board action.
+            parts = str(live_choice).split("_")
+            try:
+                act = ActionType(parts[0])
+                r_j, c_j = int(parts[1]), int(parts[2])
+                if (r_j, c_j) in unrevealed or (r_j, c_j) in candidates:
+                    lat = (time.perf_counter() - t0) * 1000.0
+                    self.total_latency_ms += lat
+                    if act == ActionType.FLAG:
+                        self.total_guesses += 1
+                    return AgentAction(
+                        action_type=act,
+                        row=r_j,
+                        col=c_j,
+                        confidence=live_confidence or 0.5,
+                        is_guess=(act == ActionType.FLAG),
+                        explanation=f"[Jev Live API] Oracle selected {act.value} at ({r_j}, {c_j}).",
+                        metadata={
+                            "latency_ms": round(lat, 4),
+                            "mode": "JEV_LIVE_API",
+                            "simulated_llm": False,
+                            "jev_choice": live_choice,
+                        },
+                    )
+            except Exception:
+                pass
+            executed_live_api = False
+
+        simulated_lat = round(random.uniform(320.0, 680.0), 2)
 
         # Evaluate move using LLM heuristic + probabilistic noise
         # LLMs occasionally suffer from counting hallucinations on multi-overlap cells
