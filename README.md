@@ -180,6 +180,16 @@ Explore how Exactor Accelerator combines deterministic algebraic reduction with 
 
 ---
 
+## 🔗 Related Projects
+
+Part of the **Exactor** ecosystem of deterministic neuro-symbolic decision engines:
+
+- **[exactor-accelerator](https://github.com/ExactorResearch/exactor-accelerator)** — the Python library this demo is built on (`pip install exactor-accelerator`)
+- **[exactor-sudoku-arena](https://github.com/ExactorResearch/exactor-sudoku-arena)** — sibling CSP demo (live: [sudoku.exactor.ai](https://sudoku.exactor.ai))
+- **[SATGuardian](https://exactorresearch.github.io/satguardian/)** — production Rust WAF using the same Boolean-cube decision approach
+
+---
+
 ## License
 
 Dual-licensed under [MIT](LICENSE).
