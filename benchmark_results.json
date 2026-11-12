@@ -1,5 +1,5 @@
 {
-  "timestamp": "2026-11-11T20:33:42.753881",
+  "timestamp": "2026-11-11T22:53:55.678949",
   "difficulty": "beginner",
   "num_games": 25,
   "metrics": {
@@ -11,15 +11,15 @@
       "win_rate_pct": 96.0,
       "avg_moves_per_game": 20.36,
       "deterministic_move_ratio_pct": 97.64,
-      "avg_latency_per_move_ms": 0.451,
-      "p50_latency_ms": 0.3948,
-      "p95_latency_ms": 0.7108,
-      "p99_latency_ms": 0.9068,
-      "total_time_seconds": 0.238,
+      "avg_latency_per_move_ms": 0.2798,
+      "p50_latency_ms": 0.2557,
+      "p95_latency_ms": 0.422,
+      "p99_latency_ms": 0.4677,
+      "total_time_seconds": 0.148,
       "total_api_calls": 0,
       "avg_api_calls_per_game": 0.0,
       "deterministic_accuracy_pct": 100.0,
-      "speedup_vs_baseline": 1756.8
+      "speedup_vs_baseline": 1901.3
     },
     "Pure JEV (LLM / RLCD)": {
       "agent_name": "Pure JEV (LLM / RLCD)",
@@ -27,41 +27,41 @@
       "wins": 0,
       "losses": 25,
       "win_rate_pct": 0.0,
-      "avg_moves_per_game": 3.72,
+      "avg_moves_per_game": 3.44,
       "deterministic_move_ratio_pct": 100.0,
-      "avg_latency_per_move_ms": 792.2749,
-      "p50_latency_ms": 768.3607,
-      "p95_latency_ms": 1075.5924,
-      "p99_latency_ms": 1099.1911,
-      "total_time_seconds": 80.13,
-      "total_api_calls": 93,
-      "avg_api_calls_per_game": 3.7,
+      "avg_latency_per_move_ms": 531.9477,
+      "p50_latency_ms": 506.8567,
+      "p95_latency_ms": 676.6103,
+      "p99_latency_ms": 734.8944,
+      "total_time_seconds": 49.211,
+      "total_api_calls": 86,
+      "avg_api_calls_per_game": 3.4,
       "deterministic_accuracy_pct": 85.0,
       "speedup_vs_baseline": 1.0
     },
     "Standard Heuristic (1st Order)": {
       "agent_name": "Standard Heuristic (1st Order)",
       "total_games": 25,
-      "wins": 18,
-      "losses": 7,
-      "win_rate_pct": 72.0,
-      "avg_moves_per_game": 24.12,
-      "deterministic_move_ratio_pct": 95.19,
-      "avg_latency_per_move_ms": 0.1386,
-      "p50_latency_ms": 0.1221,
-      "p95_latency_ms": 0.21,
-      "p99_latency_ms": 0.2179,
-      "total_time_seconds": 0.082,
+      "wins": 16,
+      "losses": 9,
+      "win_rate_pct": 64.0,
+      "avg_moves_per_game": 22.68,
+      "deterministic_move_ratio_pct": 95.77,
+      "avg_latency_per_move_ms": 0.0745,
+      "p50_latency_ms": 0.065,
+      "p95_latency_ms": 0.1139,
+      "p99_latency_ms": 0.1546,
+      "total_time_seconds": 0.043,
       "total_api_calls": 0,
       "avg_api_calls_per_game": 0.0,
       "deterministic_accuracy_pct": 70.0,
-      "speedup_vs_baseline": 5714.4
+      "speedup_vs_baseline": 7140.3
     }
   },
   "summary": {
-    "total_benchmark_time_seconds": 80.61,
+    "total_benchmark_time_seconds": 49.49,
     "fastest_agent": "Standard Heuristic (1st Order)",
     "highest_winrate_agent": "Exactor-Accelerator (Neuro-Symbolic)",
-    "speedup_factor": 1756.8
+    "speedup_factor": 1901.3
   }
 }
